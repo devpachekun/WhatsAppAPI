@@ -1,8 +1,14 @@
 var builder = WebApplication.CreateBuilder(args);
 
+// Configurar lectura de appsettings.json
+builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+// Configurar logging para que también se envíe a la consola
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+
 // Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
